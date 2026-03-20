@@ -23,3 +23,15 @@
 	width: 5rem;
 	height: 1.7rem;
 }
+
+.contact {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 4rem;
+	margin: 0 1rem;
+}
+
+.hr {
+	margin: 0 1rem;
+}

@@ -11,6 +11,9 @@ export default function App() {
 		},
 		{
 			id: 2, name: "Chidolue Chidumaga", email: "chidoluechidumaga@gmail.com"
+		},
+		{
+			id: 3, name: "Chidolue Peace", email: "chidoluepeace@gmail.com"
 		}
 	]
 

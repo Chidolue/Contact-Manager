@@ -13,8 +13,8 @@ export default function AddContact() {
                     <label>Email: </label>
                     <input type="text" name="email" placeholder="Email" />
                 </div>
-                
-                <button>Add</button>
+
+                <button>Add</button> <br /><br />
             </form>
         </div>
     )
