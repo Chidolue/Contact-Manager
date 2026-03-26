@@ -1,9 +1,10 @@
-export default function AddContact() {
+export default function AddContact({add}) {
+
     return(
         <div className="addContact">
             <h1>Add Contact</h1>
 
-            <form>
+            <form onSubmit={add}>
                 <div className="name">
                     <label>Name:</label>
                     <input type="text" name="name" placeholder="Name" />
