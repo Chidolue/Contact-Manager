@@ -1,4 +1,20 @@
-export default function AddContact({add}) {
+import { useState } from "react";
+
+export default function AddContact({setContacts}) {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    
+    function add(e) {
+        e.preventDefault();
+
+        const newStudent = {id: Date.now(), name, email};
+
+        setContacts([prev => [...prev, newStudent]])
+
+        setName("");
+        setEmail("");
+    }
 
     return(
         <div className="addContact">
@@ -7,12 +23,12 @@ export default function AddContact({add}) {
             <form onSubmit={add}>
                 <div className="name">
                     <label>Name:</label>
-                    <input type="text" name="name" placeholder="Name" />
+                    <input type="text" name="name" placeholder="Name" value={name} onChange={e =>setName(e.target.value)}/>
                 </div>
 
                 <div className="email">
                     <label>Email: </label>
-                    <input type="text" name="email" placeholder="Email" />
+                    <input type="text" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
                 </div>
 
                 <button>Add</button> <br /><br />

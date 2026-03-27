@@ -18,17 +18,9 @@ export default function App() {
 		}
 	])
 
-	function addContact(e) {
-		e.preventDefault();
-
-		const newStudent = {id: Date.now(), name, email};
-
-		setContacts([prev => [...prev, newStudent]])
-	}
-
 	return (
 		<>
-			<AddContact add={addContact}/>
+			<AddContact setContacts={setContacts}/>
 			<ContactList contacts={contacts}/>
 		</>
 	)
