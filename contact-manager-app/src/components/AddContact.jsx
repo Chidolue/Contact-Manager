@@ -10,7 +10,7 @@ export default function AddContact({setContacts}) {
 
         const newStudent = {id: Date.now(), name, email};
 
-        setContacts([prev => [...prev, newStudent]])
+        setContacts(prev => [...prev, newStudent])
 
         setName("");
         setEmail("");
