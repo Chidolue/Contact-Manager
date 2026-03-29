@@ -1,2 +1,2 @@
 # Contact-Manager
-An application for managing users contacts, proving the CRUD functionalities.
+An application for managing users contacts, providing the CRUD Capabilities.
