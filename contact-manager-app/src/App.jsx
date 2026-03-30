@@ -25,10 +25,14 @@ export default function App() {
 		localStorage.setItem("contacts", JSON.stringify(contacts));
 	}, [contacts])
 
+	function deleteContact (id) {
+		setContacts(prev => prev.filter(contact => contact.id !== id));
+	}
+
 	return (
 		<>
 			<AddContact setContacts={setContacts}/>
-			<ContactList contacts={contacts}/>
+			<ContactList contacts={contacts} onDelete={deleteContact}/>
 		</>
 	)
 }
