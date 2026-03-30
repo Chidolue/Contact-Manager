@@ -2,11 +2,14 @@ import ContactList from "./components/ContactList";
 import AddContact from "./components/AddContact";
 
 import { useState } from "react";
+import { useEffect } from "react";
 
 import './App.css';
 
 export default function App() {
-	const [contacts, setContacts] = useState([
+	const saved = localStorage.getItem("contacts");
+	const [contacts, setContacts] = useState(() => {
+		return saved ? JSON.parse(saved) : [
 		{
 			id: 1, name: "Chidolue Ebube", email: "chidolueebube@gmail.com"
 		},
@@ -16,7 +19,11 @@ export default function App() {
 		{
 			id: 3, name: "Chidolue Peace", email: "chidoluepeace@gmail.com"
 		}
-	])
+	]})
+
+	useEffect(() => {
+		localStorage.setItem("contacts", JSON.stringify(contacts));
+	}, [contacts])
 
 	return (
 		<>

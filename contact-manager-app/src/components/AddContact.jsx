@@ -23,12 +23,12 @@ export default function AddContact({setContacts}) {
             <form onSubmit={add}>
                 <div className="name">
                     <label>Name:</label>
-                    <input type="text" name="name" placeholder="Name" value={name} onChange={e =>setName(e.target.value)}/>
+                    <input type="text" name="name" placeholder="Name" value={name} onChange={e => setName(e.target.value)} required/>
                 </div>
 
                 <div className="email">
                     <label>Email: </label>
-                    <input type="text" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input type="text" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
                 </div>
 
                 <button>Add</button> <br /><br />
