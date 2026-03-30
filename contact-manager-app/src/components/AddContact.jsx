@@ -8,6 +8,11 @@ export default function AddContact({setContacts}) {
     function add(e) {
         e.preventDefault();
 
+        if (!email.endsWith("@gmail.com")) {
+            alert("Enter a valid Gmail Address");
+            return;
+        }
+
         const newStudent = {id: Date.now(), name, email};
 
         setContacts(prev => [...prev, newStudent])
