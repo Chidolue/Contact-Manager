@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddContact({setContacts}) {
 
@@ -21,6 +22,12 @@ export default function AddContact({setContacts}) {
         setEmail("");
     }
 
+    const navigate = useNavigate();
+
+    function toHome() {
+        navigate("/");
+    }
+
     return(
         <div className="addContact">
             <h1>Add Contact</h1>
@@ -36,7 +43,7 @@ export default function AddContact({setContacts}) {
                     <input type="text" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
                 </div>
 
-                <button>Add</button> <br /><br />
+                <button onClick={toHome}>Add</button> <br /><br />
             </form>
         </div>
     )

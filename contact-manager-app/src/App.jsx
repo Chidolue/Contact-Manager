@@ -1,8 +1,9 @@
-import ContactList from "./components/ContactList";
-import AddContact from "./components/AddContact";
+import ContactList from "./pages/ContactList";
+import AddContact from "./pages/AddContact";
 
 import { useState } from "react";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import './App.css';
 
@@ -31,8 +32,11 @@ export default function App() {
 
 	return (
 		<>
-			<AddContact setContacts={setContacts}/>
-			<ContactList contacts={contacts} onDelete={deleteContact}/>
+			<Routes>
+				<Route path="/" element={<ContactList contacts={contacts} onDelete={deleteContact}/>}></Route>
+
+				<Route path="/add" element={<AddContact setContacts={setContacts}/>}></Route>
+			</Routes>
 		</>
 	)
 }
