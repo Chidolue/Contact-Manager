@@ -1,5 +1,6 @@
 import ContactList from "./pages/ContactList";
 import AddContact from "./pages/AddContact";
+import EditPage from "./pages/EditPage";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -36,6 +37,8 @@ export default function App() {
 				<Route path="/" element={<ContactList contacts={contacts} onDelete={deleteContact}/>}></Route>
 
 				<Route path="/add" element={<AddContact setContacts={setContacts}/>}></Route>
+
+				<Route path="/edit" element={<EditPage/>}></Route>
 			</Routes>
 		</>
 	)

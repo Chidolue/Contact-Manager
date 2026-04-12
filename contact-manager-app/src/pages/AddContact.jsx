@@ -6,8 +6,15 @@ export default function AddContact({setContacts}) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     
+    const navigate = useNavigate();
+
     function add(e) {
         e.preventDefault();
+
+        if (!name.trim() || !email.trim()) {
+            alert("Enter Name and Email");
+            return;
+        }
 
         if (!email.endsWith("@gmail.com")) {
             alert("Enter a valid Gmail Address");
@@ -20,11 +27,6 @@ export default function AddContact({setContacts}) {
 
         setName("");
         setEmail("");
-    }
-
-    const navigate = useNavigate();
-
-    function toHome() {
         navigate("/");
     }
 
@@ -43,7 +45,7 @@ export default function AddContact({setContacts}) {
                     <input type="text" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
                 </div>
 
-                <button onClick={toHome}>Add</button> <br /><br />
+                <button>Add</button> <br /><br />
             </form>
         </div>
     )
