@@ -4,7 +4,7 @@ import EditPage from "./pages/EditPage";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import './App.css';
 
@@ -31,15 +31,22 @@ export default function App() {
 		setContacts(prev => prev.filter(contact => contact.id !== id));
 	}
 
-	return (
-		<>
-			<Routes>
-				<Route path="/" element={<ContactList contacts={contacts} onDelete={deleteContact}/>}></Route>
+	const router = createBrowserRouter([
+		{
+			path: "/",
+			element: <ContactList contacts={contacts} onDelete={deleteContact}/>
+		},
 
-				<Route path="/add" element={<AddContact setContacts={setContacts}/>}></Route>
+		{
+			path: "/add",
+			element: <AddContact setContacts={setContacts}/>
+		},
 
-				<Route path="/edit" element={<EditPage/>}></Route>
-			</Routes>
-		</>
-	)
+		{
+			path: "/edit/:id",
+			element: <EditPage contacts={contacts} setContacts={setContacts} />
+		}
+	])
+
+	return <RouterProvider router={router}/>;
 }

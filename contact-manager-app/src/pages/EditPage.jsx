@@ -1,29 +1,42 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-export default function EditPage() {
-    const [name, setName] = useState("");
+export default function EditPage({ contacts, setContacts }) {
+	const { id } = useParams();
+	const navigate = useNavigate();
 
-    function test() {
-        setName("Yo");
-    }
-    return (
-        <>
-            <h1>Edit Contact</h1>
+	const contact = contacts.find(c => c.id === Number(id));
 
-            <form>
-                <div>
-                    <label>Name:</label>
-                    <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} required/>
-                </div>
-                    
-                <div className="email">
-                    <label>Email: </label>
-                    <input type="text" name="email" required/>
-                </div>
+	const [name, setName] = useState(contact?.name || "");
+	const [email, setEmail] = useState(contact?.email || "");
 
-                <button onClick={test}>Done</button>
-                <button>Cancel</button>
-            </form>
-        </>
-    )
+	function handleSubmit(e) {
+		e.preventDefault();
+
+		const updatedContacts = contacts.map(c => {
+			if (c.id === Number(id)) {
+				return { ...c, name, email };
+			}
+			return c;
+		});
+
+		setContacts(updatedContacts);
+		navigate("/");
+	}
+
+	return (
+		<>
+			<h1>Edit Contact</h1>
+
+			<form onSubmit={handleSubmit}>
+				<input value={name} onChange={(e) => setName(e.target.value)} />
+				<input value={email} onChange={(e) => setEmail(e.target.value)} />
+
+				<button type="submit">Done</button>
+				<button type="button" onClick={() => navigate("/")}>
+					Cancel
+				</button>
+			</form>
+		</>
+	);
 }
