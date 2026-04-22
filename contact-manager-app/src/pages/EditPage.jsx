@@ -26,17 +26,25 @@ export default function EditPage({ contacts, setContacts }) {
 
 	return (
 		<>
-			<h1>Edit Contact</h1>
+            <div className="addContact">
+    			<h1>Edit Contact</h1>
 
-			<form onSubmit={handleSubmit}>
-				<input value={name} onChange={(e) => setName(e.target.value)} />
-				<input value={email} onChange={(e) => setEmail(e.target.value)} />
+                <form onSubmit={handleSubmit}>
+                    <div className="name">
+                        Name: <input value={name} onChange={(e) => setName(e.target.value)} />
+                    </div>
 
-				<button type="submit">Done</button>
-				<button type="button" onClick={() => navigate("/")}>
-					Cancel
-				</button>
-			</form>
+                    <div className="email">
+                        Email: <input value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+
+                    <button type="submit">Done</button>
+                    <button type="button" onClick={() => navigate("/")}>
+                        Cancel
+                    </button>
+                </form>
+            </div>
+
 		</>
 	);
 }
